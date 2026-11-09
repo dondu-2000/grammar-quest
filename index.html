@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Grammar Quest: Mastering Modal Verbs</title>
+<style>
+:root{--bg:#f6f3ff;--cd:#fff;--tx:#1d1740;--mu:#6b668a;--pu:#6d28d9;--bl:#2563eb;--or:#f97316;--ok:#16a34a;--no:#dc2626;--bd:#e4defa;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#120e26;--cd:#1e1840;--tx:#f1eeff;--mu:#a9a3cc;--bd:#352d66;color-scheme:dark}}
+:root[data-theme=dark]{--bg:#120e26;--cd:#1e1840;--tx:#f1eeff;--mu:#a9a3cc;--bd:#352d66;color-scheme:dark}
+*{box-sizing:border-box}html,body{height:auto;margin:0}body{background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;padding-bottom:76px}
+.top{background:linear-gradient(135deg,var(--pu),var(--bl));color:#fff;padding:18px 16px 22px;border-bottom:5px solid var(--or)}
+.top h1{margin:0;font-size:1.35rem}.top small{opacity:.85}
+#app{max-width:760px;margin:0 auto;padding:14px}
+.card{background:var(--cd);border:1px solid var(--bd);border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:0 2px 8px #6d28d91a}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.gc{cursor:pointer;border:0;text-align:left;color:var(--tx);background:var(--cd);border:1px solid var(--bd);border-radius:16px;padding:16px;font:inherit;transition:transform .15s}
+.gc:hover{transform:translateY(-3px)}.gc .ic{font-size:2rem}.gc b{display:block}.gc span{color:var(--mu);font-size:.9rem}
+.btn{background:var(--or);color:#fff;border:0;border-radius:12px;padding:12px 18px;font:inherit;font-weight:700;cursor:pointer;margin-top:10px}
+.btn.alt{background:var(--pu)}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;padding:12px;border-radius:12px;border:2px solid var(--bd);background:var(--cd);color:var(--tx);font:inherit;cursor:pointer}
+.opt.ok{border-color:var(--ok);background:#16a34a22}.opt.no{border-color:var(--no);background:#dc262622}
+.bar{height:10px;background:var(--bd);border-radius:9px;overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--bl),var(--or))}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px}.pill{background:var(--pu);color:#fff;border-radius:99px;padding:2px 12px;font-weight:700}
+.fb{background:var(--bg);border-radius:10px;padding:10px}
+.chip{border:2px solid var(--pu);background:var(--cd);color:var(--tx);border-radius:10px;padding:8px 12px;margin:4px;font:inherit;cursor:pointer}.chip.on{background:var(--pu);color:#fff}
+.tray{min-height:54px;border:2px dashed var(--bd);border-radius:12px;padding:4px;margin:8px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}.two .opt.sel{border-color:var(--or)}.two .opt.dn{border-color:var(--ok);background:#16a34a22;opacity:.7}
+table{width:100%;border-collapse:collapse;font-size:.9rem}td,th{padding:8px 4px;border-bottom:1px solid var(--bd);text-align:left}tr.me{background:#f9731622;font-weight:700}
+input,select{font:inherit;padding:10px;border-radius:10px;border:2px solid var(--bd);background:var(--cd);color:var(--tx);width:100%;margin:4px 0}
+details{border:1px solid var(--bd);border-radius:12px;padding:10px 12px;margin:8px 0;background:var(--cd)}summary{cursor:pointer;font-weight:700}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--cd);border-top:1px solid var(--bd);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav button{flex:1;border:0;background:none;color:var(--mu);padding:10px 2px;font:inherit;font-size:.78rem;cursor:pointer}nav button.on{color:var(--pu);font-weight:700}nav span{display:block;font-size:1.3rem}
+.knot{height:8px;background:repeating-linear-gradient(90deg,var(--or) 0 14px,var(--pu) 14px 28px,var(--bl) 28px 42px,#fff 42px 56px)}
+.big{font-size:2.4rem;text-align:center}
+</style></head><body>
+<div class="top"><h1>🐉 Grammar Quest</h1><small>Mastering Modal Verbs · Class X</small></div><div class="knot"></div>
+<div id="app"></div>
+<nav id="nv"></nav>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+const $=s=>document.querySelector(s),shuf=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
+let P,view='home',G=null,tm,pin=String(100000+Math.floor(Math.random()*900000));
+try{P=JSON.parse(localStorage.getItem('gq'))}catch(e){}P=P||{me:null,pl:{}};
+const save=()=>{try{localStorage.setItem('gq',JSON.stringify(P))}catch(e){}};
+// [stem, [correct, wrong, wrong, wrong], explanation]
+const F=[
+[`Students ___ respect their teachers and elders.`,[`should`,`might`,`could`,`would`],`<b>Should</b> expresses duty and advice about good values.`],
+[`You ___ wear your gho or kira on regular school days.`,[`must`,`might`,`could`,`would`],`<b>Must</b> states a strong school rule.`],
+[`___ I borrow your Dzongkha textbook?`,[`May`,`Must`,`Should`,`Would`],`<b>May I</b> politely asks for permission.`],
+[`We ___ protect our environment by reducing plastic waste.`,[`should`,`might`,`would`,`could`],`<b>Should</b> gives advice or a moral duty.`],
+[`Tashi ___ run 100 metres in 12 seconds when he was in Class IX.`,[`could`,`must`,`may`,`shall`],`<b>Could</b> shows past ability.`],
+[`Sonam ___ finish his project by Friday; the teacher will not accept it later.`,[`must`,`might`,`could`,`would`],`<b>Must</b> shows necessity or obligation.`],
+[`It ___ rain during the tshechu, so carry an umbrella.`,[`might`,`must`,`shall`,`need`],`<b>Might</b> shows a weak possibility.`],
+[`___ we clean the classroom together after the Scouts meeting?`,[`Shall`,`Must`,`Might`,`Would`],`<b>Shall we</b> makes a suggestion.`],
+[`You ___ bring lunch tomorrow; the school is providing meals.`,[`needn’t`,`mustn’t`,`shouldn’t`,`can’t`],`<b>Needn’t</b> means there is no necessity.`],
+[`Students ___ litter in the school compound.`,[`mustn’t`,`needn’t`,`might`,`may`],`<b>Mustn’t</b> means it is forbidden.`],
+[`___ you please pass me the chalk?`,[`Would`,`Must`,`Shall`,`Ought`],`<b>Would you</b> makes a polite request.`],
+[`If I won the archery competition, I ___ share the prize with my team.`,[`would`,`must`,`shall`,`need`],`<b>Would</b> is used for hypothetical situations.`],
+[`You ___ study regularly if you want to score well in your exams.`,[`ought to`,`might`,`could`,`needn’t`],`<b>Ought to</b> gives advice.`],
+[`Karma ___ speak three languages: Dzongkha, English and Sharchop.`,[`can`,`must`,`shall`,`ought`],`<b>Can</b> shows present ability.`],
+[`Visitors ___ remove their shoes before entering the lhakhang.`,[`have to`,`might`,`could`,`would`],`<b>Have to</b> shows an external rule.`],
+[`The lights are on, so the principal ___ be in the office.`,[`must`,`shall`,`needn’t`,`ought`],`<b>Must</b> can show strong deduction.`]];
+const S=[
+[`Your friend is unwell. You advise her: “You ___ see a doctor.”`,[`should`,`might`,`can`,`will`],`Advice calls for <b>should</b>.`],
+[`You politely ask a teacher: “___ you explain this again, please?”`,[`Could`,`Must`,`Shall`,`Need`],`<b>Could you</b> is a polite request.`],
+[`You are unsure if the bus will arrive on time: “The bus ___ be late today.”`,[`might`,`must`,`shall`,`needn’t`],`<b>Might</b> shows uncertainty.`],
+[`The invigilator warns: “You ___ use mobile phones in the exam hall.”`,[`mustn’t`,`needn’t`,`might`,`would`],`<b>Mustn’t</b> shows prohibition.`],
+[`An elderly woman is carrying water. You offer: “___ I carry that for you?”`,[`Shall`,`Must`,`Should`,`Need`],`<b>Shall I</b> makes an offer.`],
+[`Tomorrow is a holiday, so students ___ come to school.`,[`needn’t`,`mustn’t`,`can’t`,`ought to`],`<b>Needn’t</b> means not necessary.`]];
+const D=[
+[`Which sentence is correct?`,[`She can sing well.`,`She can to sing well.`,`She cans sing well.`,`She can sings well.`],`A modal is followed by the base verb, with no “to” and no -s.`],
+[`Which sentence is correct?`,[`He must go now.`,`He must goes now.`,`He musts go now.`,`He must to go now.`],`Modals never take -s and are followed by the base verb.`],
+[`Which sentence is correct?`,[`May I sit here?`,`Do I may sit here?`,`I may to sit here?`,`Do may I sit here?`],`Questions invert: modal + subject + verb.`],
+[`Which sentence is correct?`,[`You should respect elders.`,`You should to respect elders.`,`You should respecting elders.`,`You shoulds respect elders.`],`Should + base verb.`],
+[`Which sentence is correct?`,[`They needn’t come.`,`They needn’t to come.`,`They don’t needn’t come.`,`They needn’t coming.`],`Needn’t + base verb.`]];
+const B=[`Students should respect their elders`,`May I borrow your textbook`,`We must protect our forests`,`You mustn’t litter near the river`,`Could you help me carry this`,`Dorji can speak Dzongkha fluently`];
+const M=[[`can`,`ability`],[`may`,`permission`],[`must`,`obligation`],[`should`,`advice`],[`might`,`possibility`]];
+const GM=[['sprint','⚡','Grammar Sprint','Timed MCQs with a small speed bonus'],['fill','✏️','Fill in the Modal','Pick the right modal, get explanations'],['detect','🔍','Sentence Detective','Spot the correct, error-free sentence'],['match','🧩','Match the Modal','Tap a modal, then its function'],['chal','🎯','Grammar Challenge','Real-life Bhutanese scenarios'],['build','🧱','Sentence Builder','Tap jumbled words into order']];
+const LM=[
+['Can / Could','Ability and possibility','Subject + can/could + base verb. Negative: cannot / couldn’t. Question: Can/Could + subject + verb?','Pema can read Dzongkha. Could you open the window?','✗ She can to dance → ✓ She can dance.'],
+['May / Might','Permission and possibility','Subject + may/might + base verb. Question: May + subject + verb?','May I go to the library? It might rain on tshechu day.','✗ Do I may enter? → ✓ May I enter?'],
+['Must / Have to','Obligation and necessity','Must = strong, personal rule. Have to = outside rule. Negative: mustn’t (forbidden) vs don’t have to (not needed).','Students must wear uniform. We have to submit forms by Monday.','✗ He must goes → ✓ He must go.'],
+['Should / Ought to','Advice and recommendations','Subject + should/ought to + base verb.','You should revise daily. We ought to protect our rivers.','✗ You should to rest → ✓ You should rest.'],
+['Will / Would','Future, requests, hypotheticals','Will = future/promise. Would = polite request or imagined situation.','I will join the Scouts. Would you help me? If I could, I would visit Bumthang.','✗ I would to go → ✓ I would go.'],
+['Shall','Suggestions and offers','Mostly with I/we in questions.','Shall we plant trees? Shall I carry your bag?','✗ Shall you help? (for an offer) → ✓ Shall I help?'],
+['Need / Needn’t','Necessity and lack of necessity','Needn’t + base verb = not necessary. Need to is a normal verb.','You needn’t come early today. Do we need to bring pens?','✗ He needn’t to go → ✓ He needn’t go.']];
+const lvl=p=>1+Math.floor(p.pts/100),me=()=>P.pl[P.me];
+const NV=[['home','🏠','Home'],['learn','📘','Learn'],['play','🎮','Play'],['board','🏆','Ranks'],['teach','👩‍🏫','Teacher']];
+function go(v){clearInterval(tm);view=v;if(v!='game')G=null;R()}
+function R(){$('#nv').innerHTML=NV.map(n=>`<button class="${view==n[0]||(view=='game'&&n[0]=='play')?'on':''}" onclick="go('${n[0]}')"><span>${n[1]}</span>${n[2]}</button>`).join('');
+$('#app').innerHTML=({home,learn,play,game,board,teach}[view])();if(view=='teach')setTimeout(mkqr,0);scrollTo(0,0)}
+function home(){if(!P.me)return`<div class=card><h2>Welcome, player! 🎉</h2><p>Enter your details to start earning points and badges.</p><input id=n placeholder="Your name or username" maxlength=24><select id=c><option>Class X</option><option>Class IX</option><option>Class XI</option></select><input id=s placeholder="Section (e.g. A)" maxlength=3><button class=btn onclick=join()>Start the quest</button></div>`;
+const p=me();return`<div class=card><h2>Kuzuzangpo, ${P.me}! 👋</h2><div class=row><b>Level ${lvl(p)}</b><span>${p.pts} points</span></div><div class=bar><i style="width:${p.pts%100}%"></i></div><small>${100-p.pts%100} points to the next level</small><br><button class=btn onclick="go('play')">Play now</button> <button class="btn alt" onclick="go('learn')">Learn first</button> <button class="btn alt" onclick=out()>Switch player</button></div><div class=card><b>Your stats</b><p>${p.q} questions answered · ${p.q?Math.round(p.c/p.q*100):0}% accuracy · ${p.g} games completed</p></div>`}
+function join(){const n=$('#n').value.trim();if(!n)return;P.me=n;P.pl[n]=P.pl[n]||{cls:$('#c').value+' '+$('#s').value.toUpperCase(),pts:0,q:0,c:0,g:0};save();R()}
+function out(){P.me=null;save();R()}
+function learn(){return`<h2>Modal verbs guide</h2>`+LM.map(m=>`<details><summary>${m[0]} <small style="color:var(--mu)">· ${m[1]}</small></summary><p><b>Structure:</b> ${m[2]}</p><p><b>Examples:</b> ${m[3]}</p><p><b>Common mistake:</b> ${m[4]}</p></details>`).join('')+`<button class=btn onclick="go('play')">Practise now</button>`}
+function play(){if(!P.me)return`<div class=card>Please join first on the Home tab.</div>`;return`<h2>Choose a game</h2><div class=grid>`+GM.map(g=>`<button class=gc onclick="start('${g[0]}')"><div class=ic>${g[1]}</div><b>${g[2]}</b><span>${g[3]}</span></button>`).join('')+`</div>`}
+const prep=a=>a.map(([s,o,e])=>{const so=shuf(o);return{s,o:so,a:so.indexOf(o[0]),e}});
+function start(t){clearInterval(tm);view='game';G={t,i:0,score:0,right:0,f:0,sel:null};
+if(t=='match'){G.d=[];G.miss=0;G.sel=null;G.fo=shuf([0,1,2,3,4]);G.total=5}
+else if(t=='build'){G.n=shuf(B).slice(0,5);G.total=5;nb()}
+else{const src={sprint:()=>shuf([...F,...S]).slice(0,8),fill:()=>shuf(F).slice(0,8),chal:()=>shuf(S),detect:()=>shuf(D)}[t]();
+G.qs=src.map(q=>q);G.qs=prepA(src);G.total=G.qs.length;if(t=='sprint'){G.tl=15;tick()}}R()}
+function prepA(a){return prep(a)}
+function nb(){G.s=G.n[G.i];G.w=shuf(G.s.split(' '));G.p=[];G.f=0}
+function tick(){clearInterval(tm);tm=setInterval(()=>{G.tl--;if(G.tl<=0)ans(-1);else{const e=$('.pill');if(e)e.textContent='⏱ '+G.tl+'s'}},1000)}
+function ans(i){if(G.f)return;clearInterval(tm);G.f=1;G.sel=i;const q=G.qs[G.i];if(i==q.a){G.right++;G.score+=10;if(G.tl!=null)G.score+=Math.min(3,Math.floor(G.tl/5))}R()}
+function nxt(){G.i++;if(G.i>=G.total)return fin();G.f=0;G.sel=null;if(G.t=='build')nb();if(G.tl!=null){G.tl=15;tick()}R()}
+function pk(i){G.p.push(i);R()}function up(i){G.p=G.p.filter(x=>x!=i);R()}
+function chk(){G.f=1;G.ok=G.p.map(i=>G.w[i]).join(' ')==G.s;if(G.ok){G.right++;G.score+=10}R()}
+function mm(i){G.sel=i;R()}
+function mf(j){if(G.sel==null)return;if(G.sel==j){G.d.push(j);G.sel=null;G.msg='✅ Nice match!'}else{G.miss++;G.msg='❌ Try again'}if(G.d.length==5){G.right=5;G.total=5+G.miss;G.score=Math.max(10,50-G.miss*3);return fin()}R()}
+function fin(){clearInterval(tm);const acc=G.right/G.total,p=me(),pts=G.score+2;p.pts+=pts;p.q+=G.total;p.c+=G.right;p.g++;save();
+G.end={pts,acc,badge:acc>=.9?'🥇 Gold badge':acc>=.75?'🥈 Silver badge':acc>=.6?'🥉 Bronze badge':'Keep practising!'};R()}
+function game(){const g=G;if(!g)return play();
+if(g.end)return`<div class="card"><div class=big>🎉🎊🎉</div><h2 style="text-align:center">Quest complete!</h2><p style="text-align:center">${g.end.badge}<br><b>+${g.end.pts} points</b> · ${g.right}/${g.total} correct (${Math.round(g.end.acc*100)}%)</p><button class=btn onclick="start('${g.t}')">Play again</button> <button class="btn alt" onclick="go('board')">Leaderboard</button></div>`;
+if(g.t=='match')return`<div class=card><b>Match each modal with its function</b><div class=bar><i style="width:${g.d.length*20}%"></i></div><p>${g.msg||'Tap a modal, then tap its function.'}</p><div class=two><div>${M.map((m,i)=>`<button class="opt ${g.sel==i?'sel':''} ${g.d.includes(i)?'dn':''}" onclick="mm(${i})" ${g.d.includes(i)?'disabled':''}>${m[0]}</button>`).join('')}</div><div>${g.fo.map(j=>`<button class="opt ${g.d.includes(j)?'dn':''}" onclick="mf(${j})" ${g.d.includes(j)?'disabled':''}>${M[j][1]}</button>`).join('')}</div></div></div>`;
+if(g.t=='build')return`<div class=card><div class=row><b>Sentence ${g.i+1}/${g.total}</b></div><div class=bar><i style="width:${g.i/g.total*100}%"></i></div><p>Tap the words in the correct order.</p><div class=tray>${g.p.map(i=>`<button class="chip on" onclick="up(${i})" ${g.f?'disabled':''}>${g.w[i]}</button>`).join('')}</div><div>${g.w.map((w,i)=>g.p.includes(i)?'':`<button class=chip onclick="pk(${i})">${w}</button>`).join('')}</div>${g.f?`<p class=fb>${g.ok?'✅ Correct!':'❌ Correct order: '+g.s}</p><button class=btn onclick=nxt()>${g.i+1<g.total?'Next':'Finish'}</button>`:`<button class=btn onclick=chk() ${g.p.length==g.w.length?'':'disabled'}>Check</button>`}</div>`;
+const q=g.qs[g.i];return`<div class=card><div class=row><b>Question ${g.i+1}/${g.total}</b>${g.tl!=null?`<span class=pill>⏱ ${g.tl}s</span>`:''}</div><div class=bar><i style="width:${g.i/g.total*100}%"></i></div><h3>${q.s}</h3>${q.o.map((o,i)=>`<button class="opt ${g.f?(i==q.a?'ok':i==g.sel?'no':''):''}" onclick="ans(${i})" ${g.f?'disabled':''}>${'ABCD'[i]}. ${o}</button>`).join('')}${g.f?`<p class=fb>${g.sel==q.a?'✅ Correct! ':g.sel<0?'⏰ Time’s up. ':'❌ Not quite. '}${q.e}</p><button class=btn onclick=nxt()>${g.i+1<g.total?'Next':'Finish'}</button>`:''}</div>`}
+function board(){const L=Object.entries(P.pl).sort((a,b)=>b[1].pts-a[1].pts);if(!L.length)return`<div class=card>No players yet. Join and play a game!</div>`;
+return`<h2>🏆 Leaderboard</h2><div class=card style="overflow-x:auto"><table><tr><th>#</th><th>Player</th><th>Pts</th><th>Qs</th><th>Acc</th><th>Games</th><th>Lvl</th></tr>`+L.map(([n,p],i)=>`<tr class="${n==P.me?'me':''}"><td>${i+1}</td><td>${n}<br><small>${p.cls}</small></td><td>${p.pts}</td><td>${p.q}</td><td>${p.q?Math.round(p.c/p.q*100):0}%</td><td>${p.g}</td><td>${lvl(p)}</td></tr>`).join('')+`</table></div><small>Shows players who used this device.</small>`}
+function teach(){const L=Object.values(P.pl),q=L.reduce((a,p)=>a+p.q,0),c=L.reduce((a,p)=>a+p.c,0);
+return`<h2>Teacher corner</h2><div class=card><div class=row><div class=big>${L.length}<br><small>players</small></div><div class=big>${q}<br><small>answers</small></div><div class=big>${q?Math.round(c/q*100):0}%<br><small>accuracy</small></div></div></div><div class=card><b>Share via QR code</b><p>Game PIN: <b style="font-size:1.4rem">${pin}</b></p><label>Link to encode (paste your published site URL)</label><input id=u value="https://claude.ai/artifact/Uj2xhWtHpCcjxEyZ1ifMS5" oninput=mkqr()><div id=qr style="background:#fff;padding:10px;display:inline-block;border-radius:12px;margin-top:8px"></div></div>`}
+function mkqr(){const e=$('#qr');if(!e)return;e.innerHTML='';try{new QRCode(e,{text:$('#u').value||'https://',width:176,height:176})}catch(x){e.textContent='QR library could not load.'}}
+R();
+</script></body></html>
